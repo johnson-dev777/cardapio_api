@@ -1,3 +1,4 @@
+from typing import Optional
 from sqlmodel import SQLModel, Field
 
 # =====================================================================
@@ -78,3 +79,23 @@ class ItemCardapioUpdate(SQLModel):
 class ItemCardapioResponse(ItemCardapioBase):
     """Schema retornado pela API nas consultas. Garante a presença do campo 'id'."""
     id: int
+
+
+class ClienteBase(SQLModel):
+    nome: str
+    email: str
+    telefone: Optional[str] = None
+
+
+class Cliente(ClienteBase, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+
+
+class ClienteCreate(ClienteBase):
+    pass
+
+
+class ClienteUpdate(SQLModel):
+    nome: Optional[str] = None
+    email: Optional[str] = None
+    telefone: Optional[str] = None

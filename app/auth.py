@@ -6,9 +6,10 @@ router = APIRouter(prefix='/auth', tags=["Autenticação"])
 @router.get('/me') # /auth/me
 def me():
     # Retorno Fake
-    return 'Sou John'
+    return 'Dean'
 
 
 @router.post('/login')
 def login():
     return 'Autenticado com sucesso!'
+
